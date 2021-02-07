@@ -15,7 +15,7 @@ namespace QvaPay.Sdk.Models
         public string FirstPageUrl { get; set; }
 
         [JsonProperty("from")]
-        public int From { get; set; }
+        public int? From { get; set; }
 
         [JsonProperty("last_page")]
         public int LastPage { get; set; }
@@ -36,7 +36,7 @@ namespace QvaPay.Sdk.Models
         public string PrevPageUrl { get; set; }
 
         [JsonProperty("to")]
-        public int To { get; set; }
+        public int? To { get; set; }
 
         [JsonProperty("total")]
         public int Total { get; set; }

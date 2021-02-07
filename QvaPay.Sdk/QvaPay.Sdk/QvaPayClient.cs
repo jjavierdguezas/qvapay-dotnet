@@ -56,9 +56,9 @@ namespace QvaPay.Sdk
             }
             else
             {
-                var info = JsonConvert.DeserializeObject<T>(responseContentString);
+                var data = JsonConvert.DeserializeObject<T>(responseContentString);
                 response.Success = true;
-                response.Data = info;
+                response.Data = data;
             }
 
             return response;
@@ -78,7 +78,7 @@ namespace QvaPay.Sdk
             {
                 ["amount"] = amount.ToString("0.00"),
                 ["description"] = description,
-                ["remoteId"] = remoteId,
+                ["remote_id"] = remoteId,
                 ["signed"] = signed ? "1" : "0",
             });
 

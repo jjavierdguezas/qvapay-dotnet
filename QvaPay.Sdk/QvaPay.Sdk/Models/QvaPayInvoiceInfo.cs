@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using QvaPay.Sdk.JsonHelpers;
 using System;
 
 namespace QvaPay.Sdk.Models
@@ -21,6 +22,7 @@ namespace QvaPay.Sdk.Models
         public string RemoteId { get; set; }
 
         [JsonProperty("signed")]
+        [JsonConverter(typeof(StringToBooleanConverter))]
         public bool Signed { get; set; }
 
         [JsonProperty("url")]
