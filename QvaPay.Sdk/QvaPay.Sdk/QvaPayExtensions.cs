@@ -1,5 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using QvaPay.Sdk.Callback;
 using System;
 
 namespace QvaPay.Sdk
@@ -39,6 +43,15 @@ namespace QvaPay.Sdk
         public static IQvaPayClient GetQvaPayClient(this ServiceProvider provider)
         {
             return provider.GetService<IQvaPayClient>();
+        }
+
+        public static IEndpointConventionBuilder MapQvaPayCallback(this IEndpointRouteBuilder endpoints, string pattern)
+        {
+            var pipeline = endpoints.CreateApplicationBuilder()
+                .UseMiddleware<QvaPayCallbackMiddleware>()
+                .Build();
+
+            return endpoints.Map(pattern, pipeline).WithDisplayName("QvaPay callback endpoint");
         }
     }
 }
