@@ -118,8 +118,8 @@ namespace MyWebApp
           [...]
           app.UseEndpoints(endpoints =>
           {
-              // The webhook defined in QvaPay website looks like: `https://YOURHOST:PORT/qva-pay-callbak`
-              endpoints.MapQvaPayCallback("qva-pay-callbak");
+              // The webhook defined in QvaPay website looks like: `https://YOURHOST:PORT/qvapay-callback`
+              endpoints.MapQvaPayCallback("qvapay-callback");
               endpoints.MapControllers();
           });
           [...]
